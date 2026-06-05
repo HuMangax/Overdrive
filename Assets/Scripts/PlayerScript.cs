@@ -4,11 +4,14 @@ using UnityEngine.InputSystem;
 public class PlayerScript : MonoBehaviour
 {
     public Rigidbody2D body;
-    public float speed;
+    public float moveSpeed;
+    public float turnSpeed;
     public float decay;
-    private Vector2 currentVelocity;
-    private Vector2 direction;
+
+    private bool moving;
     public InputActionReference move;
+    private float turnDirection;
+    public InputActionReference turn;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,12 +22,16 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = move.action.ReadValue<Vector2>();
+        moving = move.action.IsPressed();
+        turnDirection = turn.action.ReadValue<float>();
     }
 
     void FixedUpdate()
     {
-        body.linearVelocity = currentVelocity + new Vector2(direction.x * speed, direction.y * speed);
-        currentVelocity = body.linearVelocity * decay;
+        float velocityMod = moving ? 1f : 0f;
+        Vector2 forwardVelocity = velocityMod * moveSpeed * (Vector2)transform.up;
+        body.linearVelocity = (body.linearVelocity + forwardVelocity) * decay;
+
+        body.angularVelocity = turnDirection * turnSpeed;
     }
 }
