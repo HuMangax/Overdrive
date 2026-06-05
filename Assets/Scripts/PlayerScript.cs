@@ -4,7 +4,9 @@ using UnityEngine.InputSystem;
 public class PlayerScript : MonoBehaviour
 {
     public Rigidbody2D body;
-    public float speed = 5;
+    public float speed;
+    public float decay;
+    private Vector2 currentVelocity;
     private Vector2 direction;
     public InputActionReference move;
 
@@ -18,6 +20,11 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         direction = move.action.ReadValue<Vector2>();
-        body.linearVelocity = new Vector2(direction.x * speed, direction.y * speed);
+    }
+
+    void FixedUpdate()
+    {
+        body.linearVelocity = currentVelocity + new Vector2(direction.x * speed, direction.y * speed);
+        currentVelocity = body.linearVelocity * decay;
     }
 }
