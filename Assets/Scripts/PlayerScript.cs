@@ -8,22 +8,28 @@ public class PlayerScript : MonoBehaviour
     public float turnSpeed;
     public float decay;
 
-    private bool moving;
     public InputActionReference move;
-    private float turnDirection;
     public InputActionReference turn;
+    public InputActionReference shoot;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float fireRate = 0.2f;
 
-    }
+    private bool moving;
+    private float turnDirection;
+    private float nextFireTime;
 
-    // Update is called once per frame
     void Update()
     {
         moving = move.action.IsPressed();
         turnDirection = turn.action.ReadValue<float>();
+
+        if (shoot.action.IsPressed() && Time.time >= nextFireTime)
+        {
+            nextFireTime = Time.time + fireRate;
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        }
     }
 
     void FixedUpdate()
