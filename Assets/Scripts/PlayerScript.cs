@@ -22,6 +22,13 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.State != GameManager.GameState.Playing)
+        {
+            moving = false;
+            turnDirection = 0f;
+            return;
+        }
+
         moving = move.action.IsPressed();
         turnDirection = turn.action.ReadValue<float>();
 
@@ -39,5 +46,10 @@ public class PlayerScript : MonoBehaviour
         body.linearVelocity = (body.linearVelocity + forwardVelocity) * decay;
 
         body.angularVelocity = turnDirection * turnSpeed;
+    }
+
+    public void Die()
+    {
+        GameManager.Instance.TriggerGameOver();
     }
 }
