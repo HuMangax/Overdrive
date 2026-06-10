@@ -12,16 +12,6 @@ public class AsteroidScript : MonoBehaviour
         body.linearVelocity = DetermineVelocity();
     }
 
-    void Update()
-    {
-        
-    }
-
-    void FixedUpdate()
-    {
-
-    }
-
     Vector2 DetermineVelocity()
     {
         float velocityMod = Random.Range(-0.3f, 0.3f);
@@ -53,5 +43,15 @@ public class AsteroidScript : MonoBehaviour
     float Offset()
     {
         return 0; //Random.Range(-moveSpeed/2f, moveSpeed/2f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Bullet")) Hit();
+    }
+
+    void Hit()
+    {
+        Destroy(gameObject);
     }
 }

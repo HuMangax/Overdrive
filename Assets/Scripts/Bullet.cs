@@ -17,4 +17,9 @@ public class Bullet : MonoBehaviour
         _body.linearVelocity = transform.up * speed;
         Destroy(gameObject, lifetime);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Asteroid")) Destroy(gameObject);
+    }
 }
