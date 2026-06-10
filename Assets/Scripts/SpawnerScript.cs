@@ -1,0 +1,61 @@
+using UnityEngine;
+
+public class SpawnerScript : MonoBehaviour
+{
+    public GameObject Asteroid;
+    public float spawnRate;
+    private float timer = 0;
+    private float xPos;
+    private float yPos;
+    private int edge;
+
+    void Start()
+    {
+
+    }
+
+    void Update()
+    {
+        if(timer < spawnRate)
+        {
+            timer = timer + Time.deltaTime;
+        }
+        else
+        {
+            SpawnAsteroid();
+            timer = 0;
+        }
+    }
+
+    void SpawnAsteroid()
+    {
+        DeterminePosition();
+        GameObject asteroid = Instantiate(Asteroid, new Vector3(xPos, yPos, 0), Quaternion.identity);
+        asteroid.GetComponent<AsteroidScript>().edge = edge;
+    }
+
+    void DeterminePosition()
+    {
+        // Select random edge of screen (N, E, S, W) and set asteroid's x and y position
+        edge = Random.Range(0,4);
+        switch (edge)
+        {
+            case 0: // North
+                xPos = Random.Range(-CameraScript.width, CameraScript.width);
+                yPos = CameraScript.height;
+                break;
+            case 1: // East
+                xPos = CameraScript.width;
+                yPos = Random.Range(-CameraScript.height, CameraScript.height);
+                break;
+            case 2: // South
+                xPos = Random.Range(-CameraScript.width, CameraScript.width);
+                yPos = -CameraScript.height;
+                break;
+            case 3: // West
+                xPos = -CameraScript.width;
+                yPos = Random.Range(-CameraScript.height, CameraScript.height);
+                break;
+        }
+    }
+}

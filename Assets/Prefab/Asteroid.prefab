@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8518402400162722491}
   - component: {fileID: 725841887179303656}
   - component: {fileID: 369281451251500279}
+  - component: {fileID: 8661175530351555176}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -133,3 +134,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AsteroidScript
   body: {fileID: 725841887179303656}
+  moveSpeed: 3
+  edge: 0
+--- !u!114 &8661175530351555176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370814594090428187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd10cc0b6f267b8dea3cf2820a7e912a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenWrap
+  cam: {fileID: 0}
