@@ -42,7 +42,7 @@ public class AsteroidScript : MonoBehaviour
 
     float Offset()
     {
-        return 0; //Random.Range(-moveSpeed/2f, moveSpeed/2f);
+        return Random.Range(-moveSpeed/2f, moveSpeed/2f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
