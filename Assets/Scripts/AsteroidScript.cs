@@ -3,11 +3,14 @@ using UnityEngine;
 public class AsteroidScript : MonoBehaviour
 {
     public Rigidbody2D body;
+    public AsteroidSize size;
     public float moveSpeed;
     public int edge;
 
-    void Start()
+    public void init(int spawnEdge, AsteroidSize asteroidSize)
     {
+        size = asteroidSize;
+        edge = spawnEdge;
         body.angularVelocity = Random.Range(-180f,180f);
         body.linearVelocity = DetermineVelocity();
     }

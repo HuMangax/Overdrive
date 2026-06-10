@@ -10,6 +10,7 @@ public class SpawnerScript : MonoBehaviour
     private float xPos;
     private float yPos;
     private int edge;
+    private AsteroidSize size;
 
     void Start()
     {
@@ -34,7 +35,7 @@ public class SpawnerScript : MonoBehaviour
         DeterminePosition();
         GameObject asteroidType = DetermineSize();
         GameObject asteroid = Instantiate(asteroidType, new Vector3(xPos, yPos, 0), Quaternion.identity);
-        asteroid.GetComponent<AsteroidScript>().edge = edge;
+        asteroid.GetComponent<AsteroidScript>().init(edge, size);
     }
 
     void DeterminePosition()
@@ -67,14 +68,17 @@ public class SpawnerScript : MonoBehaviour
         float i = Random.Range(0f,1f);
         if (i <= 0.2) 
         {
+            size = AsteroidSize.Small;
             return Asteroid_S;
         } 
         else if (i > 0.2 && i <= 0.8)
         {
+            size = AsteroidSize.Medium;
             return Asteroid_M;
         } 
         else
         {
+            size = AsteroidSize.Large;
             return Asteroid_L;
         }
     }
