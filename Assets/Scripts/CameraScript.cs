@@ -1,26 +1,35 @@
 using UnityEngine;
 
-public class CameraSetup : MonoBehaviour
+public class CameraScript : MonoBehaviour
 {
     private Vector2 gameAspect = new Vector2(4,3);
 
-    private int width;
-    private int height;
+    private Camera cam;
+
+    private int pixelWidth;
+    private int pixelHeight;
+
+    public static float width;
+    public static float height;
 
     void Start()
     {
+        cam = Camera.main;
         applyAspect();
-        width = Screen.width;
-        height = Screen.height;
+        pixelWidth = Screen.width;
+        pixelHeight = Screen.height;
     }
 
     void Update()
     {
-        if (width != Screen.width || height != Screen.height)
+        height = cam.orthographicSize;
+        width = height * cam.aspect;
+
+        if (pixelWidth != Screen.width || pixelHeight != Screen.height)
         {
             applyAspect();
-            width = Screen.width;
-            height = Screen.height;
+            pixelWidth = Screen.width;
+            pixelHeight = Screen.height;
         }
     }
 
