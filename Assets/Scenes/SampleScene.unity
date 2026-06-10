@@ -2307,7 +2307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91b91e0d7226102daf47f3b79f39f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerScript
-  Asteroid: {fileID: 370814594090428187, guid: 9686e1c0419ca1efb943a8a493e69a2a, type: 3}
+  Asteroid_S: {fileID: 370814594090428187, guid: 9686e1c0419ca1efb943a8a493e69a2a, type: 3}
+  Asteroid_M: {fileID: 1740068096446566657, guid: 18925fbed68bb4a7eb756057b2277184, type: 3}
+  Asteroid_L: {fileID: 780707305200545494, guid: a093052e1dd78163290468e3f97aa193, type: 3}
   spawnRate: 3
 --- !u!4 &1892746703
 Transform:
