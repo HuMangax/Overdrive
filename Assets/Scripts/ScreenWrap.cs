@@ -9,11 +9,15 @@ public class ScreenWrap : MonoBehaviour
     void Start() 
     {
         cam = Camera.main;
+    }
+
+    void Update ()
+    {
         height = cam.orthographicSize;
         width = height * cam.aspect;
     }
 
-    void FixedUpdate () 
+    void FixedUpdate ()
     {
         Vector3 pos = transform.position;
 
