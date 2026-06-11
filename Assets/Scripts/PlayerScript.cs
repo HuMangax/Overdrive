@@ -48,6 +48,13 @@ public class PlayerScript : MonoBehaviour
         body.angularVelocity = turnDirection * turnSpeed;
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("Asteroid")) return;
+        
+        Die();
+    }
+
     public void Die()
     {
         GameManager.Instance.TriggerGameOver();
