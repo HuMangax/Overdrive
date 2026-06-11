@@ -7,12 +7,14 @@ public class AsteroidScript : MonoBehaviour
     public float moveSpeed;
     public int edge;
 
-    public void init(int spawnEdge, AsteroidSize asteroidSize)
+    public void init(int spawnEdge, AsteroidSize asteroidSize, Vector2? fragmentVelocity = null)
     {
         size = asteroidSize;
         edge = spawnEdge;
         body.angularVelocity = Random.Range(-180f,180f);
-        body.linearVelocity = DetermineVelocity();
+        body.linearVelocity = fragmentVelocity.HasValue
+            ? fragmentVelocity.Value
+            : DetermineVelocity();
     }
 
     Vector2 DetermineVelocity()
@@ -55,6 +57,7 @@ public class AsteroidScript : MonoBehaviour
 
     void Hit()
     {
+        FindObjectOfType<SpawnerScript>().SpawnFragments(transform.position, size);
         Destroy(gameObject);
     }
 }

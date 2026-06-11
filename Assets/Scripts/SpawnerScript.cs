@@ -82,4 +82,17 @@ public class SpawnerScript : MonoBehaviour
             return Asteroid_L;
         }
     }
+
+    public void SpawnFragments(Vector3 position, AsteroidSize size)
+    {
+        if (size == AsteroidSize.Small) return;
+
+        GameObject prefab = (size == AsteroidSize.Large) ? Asteroid_M : Asteroid_S;
+
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject frag = Instantiate(prefab, position, Quaternion.identity);
+            frag.GetComponent<AsteroidScript>().init(-1, (AsteroidSize)((int)size - 1), Random.insideUnitCircle.normalized * 3f);
+        }
+    }
 }
