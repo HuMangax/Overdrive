@@ -34,7 +34,7 @@ public class SpawnerScript : MonoBehaviour
     {
         DeterminePosition();
         GameObject asteroidType = DetermineSize();
-        GameObject asteroid = Instantiate(asteroidType, new Vector3(xPos, yPos, 0), Quaternion.identity);
+        GameObject asteroid = Instantiate(asteroidType, new Vector3(xPos, yPos, -1), Quaternion.identity);
         asteroid.GetComponent<AsteroidScript>().init(edge, size);
     }
 

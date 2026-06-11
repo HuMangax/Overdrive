@@ -57,7 +57,19 @@ public class AsteroidScript : MonoBehaviour
 
     void Hit()
     {
+        GameManager.Instance.AddScore(DetermineScoreValue());
         FindObjectOfType<SpawnerScript>().SpawnFragments(transform.position, size);
         Destroy(gameObject);
+    }
+
+    int DetermineScoreValue()
+    {
+        return size switch
+        {
+            AsteroidSize.Large => 20,
+            AsteroidSize.Medium => 50,
+            AsteroidSize.Small => 100,
+            _ => 0,
+        };
     }
 }
