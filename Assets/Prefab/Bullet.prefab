@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65d780ff3820c4abba5f4f286109e3ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  speed: 10
+  speed: 20
   lifetime: 2
 --- !u!60 &-623991123173391677
 PolygonCollider2D:
