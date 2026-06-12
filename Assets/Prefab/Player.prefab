@@ -168,9 +168,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   body: {fileID: 3898898133453550743}
-  moveSpeed: 1
+  moveSpeed: 0.2
   turnSpeed: 180
   decay: 0.99
+  maxSpeed: 10
   move: {fileID: -4778653105513756868, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   turn: {fileID: 6289465861440122641, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   shoot: {fileID: 1110642597359013693, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
