@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour
     public float moveSpeed;
     public float turnSpeed;
     public float decay;
+    public float maxSpeed;
 
     public InputActionReference move;
     public InputActionReference turn;
@@ -43,7 +44,7 @@ public class PlayerScript : MonoBehaviour
     {
         float velocityMod = moving ? 1f : 0f;
         Vector2 forwardVelocity = velocityMod * moveSpeed * (Vector2)transform.up;
-        body.linearVelocity = (body.linearVelocity + forwardVelocity) * decay;
+        body.linearVelocity = Vector2.ClampMagnitude((body.linearVelocity + forwardVelocity) * decay, maxSpeed);
 
         body.angularVelocity = turnDirection * turnSpeed;
     }
